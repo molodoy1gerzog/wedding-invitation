@@ -25,3 +25,23 @@ footer{background:#455e6d;color:#f5fbff}
 .music-toggle{position:fixed;right:22px;bottom:22px;z-index:20;display:flex;align-items:center;gap:10px;padding:9px 17px 9px 9px;border:1px solid rgba(143,182,207,.7);border-radius:999px;background:rgba(251,253,255,.94);color:#526f80;box-shadow:0 8px 30px rgba(69,89,101,.16);font:500 9px var(--sans);text-transform:uppercase;letter-spacing:.1em;cursor:pointer;backdrop-filter:blur(8px);transition:transform .2s,background .2s}.music-toggle:hover{transform:translateY(-2px);background:#fff}.music-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#d8ecf7;color:#6f9fbc;font-size:18px}.music-toggle.is-playing .music-icon{animation:musicPulse 1.8s ease-in-out infinite}.music-toggle.is-playing{background:#e5f3fa}.music-toggle.is-playing .music-label:after{content:""}@keyframes musicPulse{50%{transform:scale(1.1);box-shadow:0 0 0 7px rgba(169,203,225,.25)}}
 @media(max-width:600px){.music-toggle{right:14px;bottom:14px}.music-label{display:none}.music-toggle{padding:7px}.music-icon{width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.music-toggle.is-playing .music-icon{animation:none}}
+
+/* Полная мобильная адаптация */
+@media(max-width:700px){
+  body{overflow-x:hidden;font-size:14px}
+  .nav{width:calc(100% - 32px);height:64px}.nav .monogram{font-size:21px}
+  .hero{min-height:100svh}.hero-content{width:100%;padding:88px 16px 42px}.hero h1{font-size:clamp(54px,18vw,72px);line-height:.88}.hero h1 em{font-size:.48em}.hero .eyebrow{margin-bottom:15px}
+  .date-line{gap:12px;margin-top:30px;font-size:17px;letter-spacing:.13em}.date-line span{width:32px}.intro{font-size:18px;line-height:1.45;margin-top:20px}.scroll-cue{margin-top:28px}
+  .botanical{width:82vw;height:65%;opacity:.26}
+  .section{padding:68px 18px}.section h2{font-size:clamp(39px,12vw,52px);margin-bottom:20px}.eyebrow{font-size:9px;line-height:1.55;letter-spacing:.22em;margin-bottom:14px}.body-copy{font-size:20px;line-height:1.5}
+  .welcome .flourish{margin:20px}.countdown-wrap{padding:52px 10px}.countdown{margin-top:20px}.countdown div{width:25%;padding-inline:2px}.countdown strong{font-size:clamp(28px,9vw,36px)}.countdown span{font-size:7px;letter-spacing:.1em}
+  .calendar{margin:36px auto 50px}.week,.dates{gap:4px}.week{padding-bottom:10px;margin-bottom:10px}.week span{font-size:8px}.dates i{height:38px;font-size:17px}.dates .heart:before{font-size:45px}
+  .location-card{border-radius:24px}.location-photo{width:calc(100% - 24px);margin:12px;border-width:3px}.location-info{padding:24px 18px 28px}.location-card h3{font-size:33px}.location-info>p:last-of-type{font-size:13px;line-height:1.65}.map-link{width:100%;min-height:48px;margin-top:12px}
+  .timeline{margin-top:42px}.timeline article{grid-template-columns:54px 17px minmax(0,1fr);gap:10px;min-height:142px}.timeline time{font-size:18px}.timeline h3{font-size:25px;line-height:1.05;margin-top:-2px}.timeline p{font-size:12px;line-height:1.65}.timeline .dot:before{left:3px}.timeline .dot:after{left:6px}
+  .gift-heart{width:62px;height:62px;margin-bottom:20px;font-size:29px}
+  .rsvp{padding:42px 10px}.rsvp-card{padding:46px 16px;border-radius:24px}.rsvp form{margin-top:32px}.rsvp input[type=text]{font-size:16px;padding:14px 2px;margin-bottom:25px}.rsvp .choice{min-height:52px;padding:11px 14px;font-size:13px!important;line-height:1.4}.rsvp .choice input{width:19px;height:19px}.rsvp .preferences{margin-top:27px}.rsvp button{min-height:54px;border-radius:999px;font-size:10px}.success{font-size:25px;line-height:1.35}
+  footer{padding:58px 20px 90px}footer .script{font-size:45px}
+  .music-toggle{right:12px;bottom:max(12px,env(safe-area-inset-bottom));padding:7px}.music-icon{width:40px;height:40px}
+}
+
+@media(max-width:360px){.hero h1{font-size:17vw}.date-line{font-size:15px}.section{padding-inline:14px}.rsvp{padding-inline:6px}.rsvp-card{padding-inline:13px}.timeline article{grid-template-columns:49px 15px minmax(0,1fr);gap:8px}.timeline time{font-size:17px}}

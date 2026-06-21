@@ -1,4 +1,5 @@
 const weddingDate = new Date('2026-06-26T15:00:00+03:00');
+const responseEndpoint = '';
 
 function updateCountdown() {
   const distance = Math.max(0, weddingDate - new Date());
@@ -73,12 +74,40 @@ musicToggle.addEventListener('click', async () => {
   }
 });
 
-document.getElementById('rsvpForm').addEventListener('submit', (event) => {
+document.getElementById('rsvpForm').addEventListener('submit', async (event) => {
   event.preventDefault();
+  const form = event.currentTarget;
+  const submitButton = document.getElementById('submitButton');
   const formData = new FormData(event.currentTarget);
   const data = Object.fromEntries(formData);
   data.alcohol = formData.getAll('alcohol');
+  data.submittedAt = new Date().toISOString();
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляем…';
+
+  if (responseEndpoint) {
+    try {
+      await fetch(responseEndpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      });
+    } catch (error) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Попробовать ещё раз';
+      document.getElementById('success').textContent = 'Не удалось отправить ответ. Проверьте интернет и попробуйте ещё раз.';
+      document.getElementById('success').classList.add('show');
+      return;
+    }
+  }
+
   localStorage.setItem('wedding-rsvp', JSON.stringify(data));
-  event.currentTarget.style.display = 'none';
-  document.getElementById('success').classList.add('show');
+  form.style.display = 'none';
+  const success = document.getElementById('success');
+  success.textContent = responseEndpoint
+    ? 'Спасибо! Ваш ответ отправлен ♡'
+    : 'Спасибо! Ответ сохранён. Подключение таблицы завершается ♡';
+  success.classList.add('show');
 });
