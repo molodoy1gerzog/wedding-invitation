@@ -1,5 +1,5 @@
 const weddingDate = new Date('2026-06-26T15:00:00+03:00');
-const responseEndpoint = '';
+const responseEndpoint = 'https://script.google.com/macros/s/AKfycbyCwRMfhZ0jAq3xG5SU0KwuGfTcvnokH2j0t5iRCWiwSQAAuJUkSwIgasUALLQVf1el/exec';
 
 function updateCountdown() {
   const distance = Math.max(0, weddingDate - new Date());
